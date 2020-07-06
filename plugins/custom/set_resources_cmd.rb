@@ -10,8 +10,12 @@ module AresMUSH
       end
 
       def handle
-        enactor.update(resources: self.resources)
-        client.emit_success "Resources set!"
+        if Chargen.check_chargen_locked(enactor)
+          client.emit "%xr%% You can't change this after app submission or approval.%xn"
+        else
+          enactor.update(resources: self.resources)
+          client.emit_success "Resources set!"
+        end
       end
     end
   end

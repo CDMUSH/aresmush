@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    attribute :traits, :type => DataType::Hash, :default => {}
+    attribute :traits
   end
 end

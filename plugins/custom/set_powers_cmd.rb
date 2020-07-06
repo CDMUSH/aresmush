@@ -10,8 +10,12 @@ module AresMUSH
       end
 
       def handle
-        enactor.update(powers: self.powers)
-        client.emit_success "Powers set!"
+        if Chargen.check_chargen_locked(enactor)
+          client.emit "%xr%% You can't change this after app submission or approval.%xn"
+        else
+          enactor.update(powers: self.powers)
+          client.emit_success "Powers set!"
+        end
       end
     end
   end
