@@ -1,5 +1,4 @@
 ---
-toc: Character Creation
 summary: Setting traits.
 ---
 
