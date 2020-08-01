@@ -40,6 +40,8 @@ module AresMUSH
         else
           return DrawbacksCmd
         end
+      when "listfactions"
+        return FactionsViewCmd
       end
       return nil
     end

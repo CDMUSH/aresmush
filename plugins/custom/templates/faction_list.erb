@@ -1,0 +1,11 @@
+<%= header %>
+<%= "%xh#{title}%xn%r%r" if title -%>
+<%= "%xh#{subtitle}%xn%r" if subtitle -%>
+<% list.each do |l| %>
+<%= line_with_text l[0] %>
+          <%= left("OOC Leaders:",14) %><%= left("#{l[1]['oocleads']}", 43) %><%= right("Count: #{l[1]['count']}",10) %>
+          <%= left("IC Leaders:", 14) %><%= left("#{l[1]['icleads']}", 43) %>
+<% end %>
+<%= divider %>
+<%= "#{subfooter}%r" if subfooter -%>
+<%= footer %>
