@@ -34,8 +34,8 @@ module AresMUSH
             self.fac_name = "SHIELD|S.H.I.E.L.D."
           end
 
-          c = Character.all.select { |c| c.demographics['factions'] =~ /#{self.fac_name}/i && !c.is_npc? && !c.is_admin? && c.is_approved? }.map { |c| "#{c.name} #{c.demographics['nickname']}" }
-          template = BorderedTableTemplate.new c, 39, "Faction Roster"
+          c = Character.all.select { |c| c.demographics['factions'] =~ /#{self.fac_name}/i && !c.is_npc? && !c.is_admin? && c.is_approved? }.map { |c| Login.is_online_or_on_web?(c)?"(%x112+%xn) #{c.name} #{c.demographics['nickname']}":"(%x238-%xn) #{c.name} #{c.demographics['nickname']}" }
+          template = BorderedTableTemplate.new c, 39, "Faction Roster", "%r(%x112+%xn) - Online | (%x238-%xn) Offline"
           client.emit template.render
 
 #          c.each do |k,v|
