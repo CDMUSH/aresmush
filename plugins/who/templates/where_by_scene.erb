@@ -12,5 +12,9 @@
   <%= people.sort.join(", ") %>
 <% end %>
 <%= divider %>
+<% if is_admin %>
+%xr<%= center( unique_logins, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
+<% else %>
 %xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
+<% end %>
 <%= footer %>

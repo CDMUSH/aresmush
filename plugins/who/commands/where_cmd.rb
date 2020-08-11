@@ -25,7 +25,7 @@ module AresMUSH
         when "friends"
           online_chars = online_chars.select { |char| enactor.is_friend?(char)  }
         end
-        template = WhereTemplate.new online_chars, client
+        template = WhereTemplate.new online_chars, client, enactor
         client.emit template.render
       end      
     end

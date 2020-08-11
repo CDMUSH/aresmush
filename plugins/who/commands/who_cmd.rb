@@ -19,7 +19,7 @@ module AresMUSH
           online_chars = online_chars.select { |char| char.name =~ /^#{self.search}/ }
         end
         
-        template = WhoTemplate.new online_chars
+        template = WhoTemplate.new online_chars, enactor
         client.emit template.render
       end      
     end
