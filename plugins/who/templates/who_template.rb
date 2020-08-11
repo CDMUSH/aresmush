@@ -6,10 +6,11 @@ module AresMUSH
       # some are defined in a common file.
       include CommonWhoFields
     
-      attr_accessor :online_chars
+      attr_accessor :online_chars, :enactor
       
-      def initialize(online_chars)
+      def initialize(online_chars, enactor)
         self.online_chars = online_chars
+        self.enactor = enactor
         super File.dirname(__FILE__) + "/who.erb"
       end
       
@@ -36,6 +37,11 @@ module AresMUSH
         
         left(title, width)
       end
+
+      def is_admin
+        enactor.is_admin?
+      end
+
     end 
   end
 end

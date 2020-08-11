@@ -6,13 +6,13 @@ module AresMUSH
       # some are defined in a common file.
       include CommonWhoFields
     
-      attr_accessor :online_chars, :scene_groups
+      attr_accessor :online_chars, :scene_groups, :enactor
     
-      def initialize(online_chars, client)
+      def initialize(online_chars, client, enactor)
         @online_chars = online_chars
         @scene_groups = build_scene_groups
         @client = client
-        
+        self.enactor = enactor        
         
         case (Global.read_config("who", "where_style"))
         when "scene"
@@ -141,6 +141,11 @@ module AresMUSH
       def section_line(title)
         @client.screen_reader ? title : line_with_text(title)
       end
+
+      def is_admin
+        enactor.is_admin?
+      end
+
     end 
   end
 end

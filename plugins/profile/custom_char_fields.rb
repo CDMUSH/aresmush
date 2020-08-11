@@ -12,7 +12,11 @@ module AresMUSH
       # Return a hash of custom fields formatted for editing in the profile editor
       # Example: return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
-        return { }
+        if (viewer.is_admin?)
+          return { powers: Website.format_input_for_html(char.powers), skills: Website.format_input_for_html(char.skills), resources: Website.format_input_for_html(char.resources), drawbacks: Website.format_input_for_html(char.drawbacks) }
+        else 
+          return { }
+        end
       end
 
       # Return a hash of custom fields formatted for editing in chargen
@@ -23,8 +27,14 @@ module AresMUSH
       
       # Custom fields will be in char_data[:custom]
       # Example: char.update(goals: char_data[:custom][:goals])
-      def self.save_fields_from_profile_edit(char, char_data)
-
+      def self.save_fields_from_profile_edit(char, char_data, enactor)
+        if (enactor.is_admin?)
+          char.update(powers: Website.format_input_for_mush(char_data[:custom][:powers]))
+          char.update(skills: Website.format_input_for_mush(char_data[:custom][:skills]))
+          char.update(resources: Website.format_input_for_mush(char_data[:custom][:resources]))
+          char.update(drawbacks: Website.format_input_for_mush(char_data[:custom][:drawbacks]))
+          return []
+        end
       end
       
       # Save fields and return an array of any error messages.

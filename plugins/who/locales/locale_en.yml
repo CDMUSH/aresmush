@@ -16,3 +16,5 @@ en:
         where_private_scene_header: "Other"
         web_room: "Web Portal"
         
+        unique_logins: "%{count} Online/%{count2} Unique"
+        
