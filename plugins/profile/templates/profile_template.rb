@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def visible_demographics
-        Demographics.visible_demographics(@char, @enactor).select { |d| d != 'birthdate' }
+        Demographics.visible_demographics(@char, @enactor).select { |d| d != 'birthdate' && d != 'themesong' }
       end
       
       def demographic(d)
@@ -29,6 +29,10 @@ module AresMUSH
       def age
         age = @char.age
         age == 0 ? "" : age
+      end
+
+      def themesong
+        themesong = @char.demographic(:themesong)
       end
       
       def show_age

@@ -34,6 +34,7 @@ en:
         birthdate_title: "Birthdate"
         colony_title: "Colony"
         rank_title: "Rank"
+        themesong_title: "Themesong"
         unread_mail: "Unread Mail"
         unread_message_count: "%{num} Messages"
         wiki_title: "Wiki"
