@@ -42,6 +42,8 @@ module AresMUSH
         end
       when "listfactions"
         return FactionsViewCmd
+      when "filelimits"
+        return ViewFileLimitsCmd
       end
       return nil
     end
