@@ -53,6 +53,9 @@ module AresMUSH
       if (Demographics.all_demographics.include?('played by'))
         types << 'Played By'
       end
+      if (Demographics.all_demographics.include?('themesong'))
+        types << 'Themesong'
+      end
       if (Ranks.is_enabled?)
         types << 'Rank'
       end
