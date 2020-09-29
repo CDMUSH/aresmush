@@ -6,11 +6,12 @@ module AresMUSH
       # some are defined in a common file.
       include CommonWhoFields
     
-      attr_accessor :online_chars
+      attr_accessor :online_chars, :enactor
     
-      def initialize(online_chars, client)
+      def initialize(online_chars, client, enactor)
         @online_chars = online_chars
-                
+        self.enactor = enactor                 
+        
         @client = client
         
         super File.dirname(__FILE__) + "/where_by_scene.erb"
@@ -143,6 +144,10 @@ module AresMUSH
           area = scene.room.area ? "#{scene.room.area.name} - " : ""
           return "#{scene_id} #{area}#{scene.room.name}#{scene_codes}"
         end
+      end
+
+      def is_admin
+        enactor.is_admin?
       end
       
     end 
