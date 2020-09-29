@@ -105,7 +105,8 @@ module AresMUSH
         groups = {}
         self.online_chars.each do |c|
           if (is_on_web?(c))
-            append_to_group groups, t('who.web_room'), c.name
+            char_name = name(c)
+            append_to_group groups, t('who.web_room'), char_name
           else
             next if c.room.scene && !c.room.scene.is_private?
             next if c.room.room_type != "OOC"

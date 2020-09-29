@@ -26,7 +26,7 @@ module AresMUSH
           online_chars = online_chars.select { |char| enactor.is_friend?(char)  }
         end
         if (Global.read_config("who", "where_style") == "scene")
-          template = WhereSceneTemplate.new online_chars, client
+          template = WhereSceneTemplate.new online_chars, client, enactor
         else
           template = WhereTemplate.new online_chars, client, enactor
         end
