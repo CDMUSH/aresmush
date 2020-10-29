@@ -73,7 +73,7 @@ module AresMUSH
         
         Describe.save_web_descs(char, request.args['descs'])
 
-        errors = CustomCharFields.save_fields_from_profile_edit(char, request.args) || []
+        errors = CustomCharFields.save_fields_from_profile_edit(char, request.args, enactor) || []
         if (errors.class == Array && errors.any?)
           return { error: errors.join("\n") }
         end
